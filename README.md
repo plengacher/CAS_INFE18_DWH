@@ -30,13 +30,21 @@ p.s., No need to restart the MySQL daemon!
 * Welche Produkte haben die höchste Marge?
 * Woher stammen die Kunden mit dem höchsten Umsatz? mit den meisten bezogenen Produkten?
 
+## Implementierung des Prozesses in PDI
+
+Es wurden verschiedene Transformationen erstellt welche den ETL-Prozess implementierne:
+
+* CSV_EXport: Tranformation welche die Quelltabellen in csv schreiben
+* Staging Import: Import der csv in die Staging area
+* DWH import: Import in das DWH-Schema. Dabei werden auch der Transformationsteil des ETL Prozesses druchgeführt
+
 ## Exportieren der Tabellen in csv
 
 Hierfür wurde eine PDI-Tranfsormation erstellt welche die benötigten Tabellen in eine csv-Datei schreiben. Die Output Pfade (C:\PDI\DWH\*.*) wurden so gewählt, dass die Tranformationen bei allen Projketbeteiligten ausgeführt werden können. Aufgrund der gemeinsamen Installation von PDI wurde der Ordner C:\PDI erstellt und kann für die Datenablage benutzt werden.
 [[ADD Screenshot Transformation]]
 [[ADD Screenshot Detailansicht]]
 
-## Einlesen der csv Dateien
+
 
 
 
