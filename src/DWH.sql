@@ -1,66 +1,72 @@
 
 
-create database DWH;
+create database if not exists DWH;
 
+drop table if exists DWH.Product_Dim;
+drop table if exists DWH.Customers_Dim;
+drop table if exists DWH.Date_Dim;
+drop table if exists DWH.Sales;
 
-drop table DWH.customers;
-drop table DWH.order_details;
-drop table DWH.orders;
-drop table DWH.products;
-drop table DHW.order_details_clean;
-
-
--- ADD CREATE TABLE Statements hereorder_details
-
--- orders 
-
-CREATE TABLE DWH.orders
+CREATE TABLE DWH.Product_Dim
 (
-  id BIGINT
-, employee_id BIGINT
-, customer_id BIGINT
-, order_date VARCHAR(29)
-, shipped_date VARCHAR(29)
-, shipper_id BIGINT
-, ship_name VARCHAR(22)
-, ship_address VARCHAR(15)
-, ship_city VARCHAR(14)
-, ship_state_province VARCHAR(2)
-, ship_zip_postal_code BIGINT
-, ship_country_region VARCHAR(3)
-, shipping_fee DOUBLE
-, taxes DOUBLE
-, payment_type VARCHAR(11)
-, paid_date VARCHAR(29)
-, notes BOOLEAN
-, tax_rate BIGINT
-, tax_status_id BOOLEAN
-, status_id BIGINT
+  Technical_key BIGINT
+, version INT
+, date_from DATETIME
+, date_to DATETIME
+, id BIGINT
+, product_code VARCHAR(9)
+, product_name VARCHAR(40)
+, description BOOLEAN
+, standard_cost DOUBLE
+, list_price DOUBLE
+, quantity_per_unit VARCHAR(20)
+, category VARCHAR(25)
 )
 ;
 
--- costumers
-
-CREATE TABLE DWH.customers
+CREATE TABLE DWH.Customers_Dim
 (
-  id BIGINT
+  Technical_key BIGINT
+, version INT
+, date_from DATETIME
+, date_to DATETIME
+, id BIGINT
 , company VARCHAR(10)
 , last_name VARCHAR(16)
 , first_name VARCHAR(13)
-, email_address BOOLEAN
-, job_title VARCHAR(25)
-, business_phone VARCHAR(13)
-, home_phone BOOLEAN
-, mobile_phone BOOLEAN
-, fax_number VARCHAR(13)
-, address VARCHAR(15)
 , city VARCHAR(14)
 , state_province VARCHAR(2)
 , zip_postal_code BIGINT
 , country_region VARCHAR(3)
-, web_page BOOLEAN
-, notes BOOLEAN
-, attachments BOOLEAN
 )
 ;
 
+CREATE TABLE DWH.Date_Dim
+(
+  DATE_SK INT
+, YEAR_NUMBER INT
+, MONTH_NUMBER INT
+, DAY_OF_YEAR_NUMBER INT
+, DAY_OF_MONTH_NUMBER INT
+, DAY_OF_WEEK_NUMBER INT
+, WEEK_OF_YEAR_NUMBER INT
+, DAY_NAME VARCHAR(30)
+, MONTH_NAME VARCHAR(30)
+, QUARTER_NUMBER INT
+, QUARTER_NAME VARCHAR(2)
+, YEAR_QUARTER_NAME VARCHAR(32)
+, WEEKEND_IND CHAR(1)
+, DAYS_IN_MONTH_QTY INT
+, DAY_DESC VARCHAR(63)
+, WEEK_SK INT
+, DAY_DATE DATETIME
+, WEEK_NAME VARCHAR(32)
+, WEEK_OF_MONTH_NUMBER INT
+, WEEK_OF_MONTH_NAME VARCHAR(63)
+, YEAR_SK INT
+, MONTH_SK INT
+, QUARTER_SK INT
+, DAY_OF_WEEK_SORT_NAME VARCHAR(60)
+, YEAR_SORT_NUMBER VARCHAR(4)
+)
+;
