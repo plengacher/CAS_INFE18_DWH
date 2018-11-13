@@ -1,13 +1,14 @@
 create database if not exists staging;
 
 drop table if exists staging.customers;
-drop table if exists staging.Customer_dim;
+drop table if exists staging.Customers_dim;
 drop table if exists staging.order_details;
 drop table if exists staging.order_details_clean;
 drop table if exists staging.orders;
 drop table if exists staging.products;
 drop table if exists staging.Products_dim;
 drop table if exists staging.Date_dim;
+drop table if exists staging.location_dim;
 
 
 -- ADD CREATE TABLE Statements here
@@ -36,26 +37,25 @@ CREATE TABLE staging.customers
 )
 ;
 
-CREATE TABLE staging.Customer_dim
+CREATE TABLE staging.customers_dim
 (
-  Technical_key BIGINT NOT NULL PRIMARY KEY
-, version INT
-, date_from DATETIME
-, date_to DATETIME
-, id BIGINT
+  id BIGINT
 , company VARCHAR(10)
 , last_name VARCHAR(16)
 , first_name VARCHAR(13)
+, email_address BOOLEAN
+, job_title VARCHAR(25)
+, business_phone VARCHAR(13)
+, home_phone BOOLEAN
+, mobile_phone BOOLEAN
+, fax_number VARCHAR(13)
+, address VARCHAR(15)
 , city VARCHAR(14)
-, state_province VARCHAR(2)
-, zip_postal_code BIGINT
-, country_region VARCHAR(3)
+, web_page BOOLEAN
+, notes BOOLEAN
+, attachments BOOLEAN
 )
-;CREATE INDEX idx_Customer_dim_lookup ON staging.Customer_dim(id)
 ;
-CREATE INDEX idx_Customer_dim_tk ON staging.Customer_dim(Technical_key)
-;
-
 
 CREATE TABLE staging.order_details
 (
@@ -180,4 +180,20 @@ CREATE TABLE staging.Date_dim
 , YEAR_SORT_NUMBER VARCHAR(4)
 )
 ;CREATE INDEX idx_Date_dim_lookup ON staging.Date_dim(DATE_SK)
+;
+
+CREATE TABLE staging.location_dim
+(
+  technical_key BIGINT NOT NULL PRIMARY KEY
+, version INT
+, date_from DATETIME
+, date_to DATETIME
+, city VARCHAR(14)
+, state_province VARCHAR(2)
+, country_region VARCHAR(3)
+, zip_postal_code BIGINT
+)
+;CREATE INDEX idx_location_dim_lookup ON staging.location_dim(city, state_province, country_region, zip_postal_code)
+;
+CREATE INDEX idx_location_dim_tk ON staging.location_dim(technical_key)
 ;

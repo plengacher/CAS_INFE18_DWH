@@ -597,11 +597,6 @@ Weeks run from Sunday to Saturday.  If you need something else, you will need to
     </hop>
     <hop>
       <from>Select values</from>
-      <to>DIMENSION_DAY</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
       <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
@@ -1059,168 +1054,6 @@ Weeks run from Sunday to Saturday.  If you need something else, you will need to
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>DIMENSION_DAY</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>mySQL_DWH</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>staging</schema>
-      <table>Date_dim</table>
-      <key>
-        <name>DATE_SK</name>
-        <field>DATE_SK</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>YEAR_NUMBER</name>
-        <rename>year_number</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>MONTH_NUMBER</name>
-        <rename>month_number</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DAY_OF_YEAR_NUMBER</name>
-        <rename>day_of_year_number</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DAY_OF_MONTH_NUMBER</name>
-        <rename>day_of_month_number</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DAY_OF_WEEK_NUMBER</name>
-        <rename>day_of_week_number</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>WEEK_OF_YEAR_NUMBER</name>
-        <rename>week_of_year_number</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DAY_NAME</name>
-        <rename>day_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>MONTH_NAME</name>
-        <rename>month_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>QUARTER_NUMBER</name>
-        <rename>quarter_number</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>QUARTER_NAME</name>
-        <rename>quarter_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>YEAR_QUARTER_NAME</name>
-        <rename>year_quarter_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>WEEKEND_IND</name>
-        <rename>weekend_ind</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DAYS_IN_MONTH_QTY</name>
-        <rename>DAYS_IN_MONTH_QTY</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DATE_SK</name>
-        <rename>DATE_SK</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DAY_DESC</name>
-        <rename>DAY_DESC</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>WEEK_SK</name>
-        <rename>WEEK_SK</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DAY_DATE</name>
-        <rename>DAY_DATE</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>WEEK_NAME</name>
-        <rename>week_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>WEEK_OF_MONTH_NUMBER</name>
-        <rename>week_of_month_number</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>WEEK_OF_MONTH_NAME</name>
-        <rename>week_of_month_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>YEAR_SK</name>
-        <rename>year_sk</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>MONTH_SK</name>
-        <rename>month_sk</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>QUARTER_SK</name>
-        <rename>quarter_sk</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DAY_OF_WEEK_SORT_NAME</name>
-        <rename>day_of_week_sort_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>YEAR_SORT_NUMBER</name>
-        <rename>year_sort_number</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>928</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2703,7 +2536,7 @@ var DAY_OF_WEEK_SORT_NAME = "Day " + DayOfWeek.getInteger();</jsScript_script>
     <schema>staging</schema>
     <table>date_dim</table>
     <commit>1000</commit>
-    <truncate>N</truncate>
+    <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
     <specify_fields>N</specify_fields>
@@ -2727,7 +2560,7 @@ var DAY_OF_WEEK_SORT_NAME = "Day " + DayOfWeek.getInteger();</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>928</xloc>
-      <yloc>320</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
