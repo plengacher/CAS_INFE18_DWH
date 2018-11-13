@@ -31,17 +31,7 @@ CREATE TABLE DWH.Customers_Dim
 , company VARCHAR(10)
 , last_name VARCHAR(16)
 , first_name VARCHAR(13)
-, email_address BOOLEAN
-, job_title VARCHAR(25)
-, business_phone VARCHAR(13)
-, home_phone BOOLEAN
-, mobile_phone BOOLEAN
-, fax_number VARCHAR(13)
-, address VARCHAR(15)
 , city VARCHAR(14)
-, web_page BOOLEAN
-, notes BOOLEAN
-, attachments BOOLEAN
 )
 ;
 
@@ -50,18 +40,11 @@ CREATE TABLE DWH.Date_Dim
   DATE_SK INT
 , YEAR_NUMBER INT
 , MONTH_NUMBER INT
-, DAY_OF_MONTH_NUMBER INT
 , WEEK_OF_YEAR_NUMBER INT
 , QUARTER_NUMBER INT
 , QUARTER_NAME VARCHAR(2)
 , YEAR_QUARTER_NAME VARCHAR(32)
-, WEEKEND_IND CHAR(1)
-, DAY_DESC VARCHAR(63)
-, WEEK_SK INT
 , DAY_DATE DATETIME
-, YEAR_SK INT
-, MONTH_SK INT
-, QUARTER_SK INT
 )
 ;
 
