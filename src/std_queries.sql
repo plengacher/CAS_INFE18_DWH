@@ -55,7 +55,7 @@ FROM dwh.sales_facts AS sales,
 WHERE cust.id = sales.customer_id AND
 	  prod.id = sales.product_id
 GROUP BY cust.id
-ORDER BY SUM(sales.unit_price - prod.standard_cost) DESC LIMIT 10;
+ORDER BY SUM(sales.unit_price - prod.standard_cost) DESC;
 
 -- in which quarter did we generate the biggest revenue
 SELECT date.quarter_number AS Quarter,
