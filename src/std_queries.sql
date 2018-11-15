@@ -81,3 +81,8 @@ WHERE date.date_sk = sales.date_id AND
       loc.city = cust.city
 GROUP BY date.year_quarter_name, loc.state_province
 ORDER BY SUM(sales.quantity*sales.unit_price) DESC LIMIT 10;
+
+use DWH;
+SELECT customers.id, customers.city, location_dim.*, sales.* FROM sales_facts
+left join customers on sales_facts.customer_id = customers.id
+left join location_dim on location_dim.city = customers.city;
